@@ -1,9 +1,27 @@
-import Register from "../components/register.js";
+import React from "react";
+import Avatar from "../components/avatar.js";
+import Login from "../components/register.js";
 
 export default function Home() {
+  const [username, setUsername] = React.useState("");
+
   return (
-    <div className="flex rounded-sm bg-neu-800 ring-1 ring-white/10  shadow-md shadow-neu-500 m-4 max-w-2xl">
-      <Register />
+    <div
+      className="h-screen"
+      style={{
+        backgroundImage: `url(https://virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain.jpg)`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundBlendMode: "multiply",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <div className="flex rounded-md bg-neu-700 ring-1 ring-white/10  shadow-md shadow-neu-500 w-fit py-6 mb-20">
+        <Login teste={setUsername}/>
+        <Avatar />
+      </div>
     </div>
   );
 }
