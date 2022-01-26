@@ -1,9 +1,14 @@
 import React from "react";
 import Avatar from "../components/avatar.js";
-import Login from "../components/register.js";
+import Login from "../components/login.js";
 
 export default function Home() {
   const [username, setUsername] = React.useState("");
+
+  const handleInputChange = (user) => {
+    //const newUsername = user;
+    setUsername(user);
+  };
 
   return (
     <div
@@ -18,9 +23,10 @@ export default function Home() {
         justifyContent: "center",
       }}
     >
-      <div className="flex rounded-md bg-neu-700 ring-1 ring-white/10  shadow-md shadow-neu-500 w-fit py-6 mb-20">
-        <Login teste={setUsername}/>
-        <Avatar />
+      <div className="flex rounded-md bg-neu-700 ring-1 ring-neu-000/20 shadow-lg shadow-neu-400/80 w-fit py-8 px-2 mb-20">
+        <Login handleInputChange={handleInputChange} />
+        <div className="w-4"></div>
+        <Avatar user={username} />
       </div>
     </div>
   );
