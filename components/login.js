@@ -1,21 +1,33 @@
-import { useState } from "react";
+import { useRouter } from "next/router";
 
 function Login({ handleInputChange }) {
-  const [inputUser, setInputUser] = useState("");
+  const router = useRouter();
 
   const handleSetUser = (event) => {
-    //setInputUser(event.target.value);
-    handleInputChange(event.target.value);
+    if (event.target.value.length > 2) {
+      handleInputChange(event.target.value);
+    } else {
+      handleInputChange("");
+    }
   };
 
-  /*const handleInputChange = (event) => {
-    setInputUser(event.target.value);
-    
-  };*/
+  const formSubmit = (event) => {
+    event.preventDefault();
+    let user = event.target.children[1].children[0].value;
+    if (user.length < 3) {
+      alert("Usuário inválido!");
+    } else {
+      router.push("/chat");
+    }
+  };
 
   return (
     <div className="flex text-center w-76 mx-6">
-      <form className="flex flex-col justify-between" autoComplete="off">
+      <form
+        className="flex flex-col justify-between"
+        autoComplete="off"
+        onSubmit={formSubmit}
+      >
         <div>
           <p className="text-neu-100 text-2xl font-bold my-3 mx-4">
             Boas vindas de volta!
@@ -31,6 +43,7 @@ function Login({ handleInputChange }) {
             placeholder="Entre com seu usuário GitHub"
             onChange={handleSetUser}
             autoFocus
+            required
           />
           <div>
             <input
