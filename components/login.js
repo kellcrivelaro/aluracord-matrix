@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 
 function Login({ handleInputChange }) {
   const router = useRouter();
-
   const handleSetUser = (event) => {
     if (event.target.value.length > 2) {
       handleInputChange(event.target.value);
@@ -12,15 +11,21 @@ function Login({ handleInputChange }) {
   };
 
   const formSubmit = (event) => {
-    event.preventDefault();
     let user = event.target.children[1].children[0].value;
-    if (user.length < 3) {
-      alert("Usuário inválido!");
-    } else {
-      router.push("/chat");
-    }
+    event.preventDefault();
+    fetch(`https://api.github.com/users/${user}`).then(async (response) => {
+      const dadosGitHub = await response.json();
+      console.log(response.status);
+      console.log(dadosGitHub);
+      if (user.length < 3) {
+        alert("Usuário inválido!");
+      } else if (response.status == "404") {
+        alert("Usuário inválido!");
+      } else {
+        router.push("/chat");
+      }
+    });
   };
-
   return (
     <div className="flex text-center w-76 mx-6">
       <form

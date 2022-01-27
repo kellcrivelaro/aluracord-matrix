@@ -10,12 +10,12 @@ export default function Chat() {
 
   const handleNewMessage = (newMessage) => {
     const message = [
+      ...messageList,
       {
         id: messageList.length + 1,
         from: "kellcrivelaro",
         text: newMessage,
       },
-      ...messageList,
     ];
 
     setMessageList(message);
