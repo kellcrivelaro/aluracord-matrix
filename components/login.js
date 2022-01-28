@@ -12,13 +12,20 @@ function Login({ handleInputChange }) {
   };
 
   const formSubmit = (event) => {
-    event.preventDefault();
     let user = event.target.children[1].children[0].value;
-    if (user.length < 3) {
-      alert("Usuário inválido!");
-    } else {
-      router.push("/chat");
-    }
+    event.preventDefault();
+    fetch(`https://api.github.com/users/${user}`).then((response) =>
+      response.json().then((data) => {
+        const gitData = data;
+        if (user.length < 3) {
+          alert("Usuário inválido!");
+        } else if (data.message == "Not Found") {
+          alert("Usuário inválido!");
+        } else {
+          router.push("/chat");
+        }
+      })
+    );
   };
 
   return (

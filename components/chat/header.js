@@ -1,4 +1,7 @@
+import { useRouter } from "next/router";
+
 export default function Header() {
+  const router = useRouter();
   return (
     <div className="flex flex-row justify-between w-full mb-2 items-end">
       <p className="text-neu-000 text-4xl font-bold ml-6">Chat</p>
@@ -9,6 +12,7 @@ export default function Header() {
             hover:text-white brightness-110"
         type="submit"
         value="Logout"
+        onClick={router.back}
       />
     </div>
   );
