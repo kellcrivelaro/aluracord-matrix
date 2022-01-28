@@ -13,18 +13,18 @@ function Login({ handleInputChange }) {
   const formSubmit = (event) => {
     let user = event.target.children[1].children[0].value;
     event.preventDefault();
-    fetch(`https://api.github.com/users/${user}`).then(async (response) => {
-      const dadosGitHub = await response.json();
-      console.log(response.status);
-      console.log(dadosGitHub);
-      if (user.length < 3) {
-        alert("Usuário inválido!");
-      } else if (response.status == "404") {
-        alert("Usuário inválido!");
-      } else {
-        router.push("/chat");
-      }
-    });
+    fetch(`https://api.github.com/users/${user}`).then((response) =>
+      response.json().then((data) => {
+        const gitData = data;
+        if (user.length < 3) {
+          alert("Usuário inválido!");
+        } else if (data.message == "Not Found") {
+          alert("Usuário inválido!");
+        } else {
+          router.push("/chat");
+        }
+      })
+    );
   };
   return (
     <div className="flex text-center w-76 mx-6">
