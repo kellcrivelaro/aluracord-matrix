@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 
 function Login({ handleInputChange }) {
   const router = useRouter();
-
   const handleSetUser = (event) => {
     if (event.target.value.length > 2) {
       handleInputChange(event.target.value);
@@ -22,12 +21,11 @@ function Login({ handleInputChange }) {
         } else if (data.message == "Not Found") {
           alert("Usuário inválido!");
         } else {
-          router.push("/chat");
+          router.push(`/chat?username=${user}`);
         }
       })
     );
   };
-
   return (
     <div className="flex text-center w-76 mx-6">
       <form

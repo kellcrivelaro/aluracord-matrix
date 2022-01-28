@@ -12,7 +12,7 @@ export default function InputMessage({ handleNewMessage }) {
   };
 
   return (
-    <div className=" border-neu-400/40 border-t w-full flex">
+    <div className=" border-neu-400/40 w-full flex">
       <textarea
         ref={textarea}
         className="border-0 w-full h-[5rem] rounded-md bg-transparent text-neu-000 px-2 pt-1 resize-none"
