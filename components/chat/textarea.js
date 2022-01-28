@@ -29,8 +29,8 @@ const TextArea = ({
           })}
         </div>
       )}
-
       <div className="p-1"></div>
+      <hr className="border-neu-400/50"></hr>
       <InputMessage handleNewMessage={handleNewMessage} />
     </div>
   );
