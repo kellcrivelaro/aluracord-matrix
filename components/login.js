@@ -15,11 +15,10 @@ function Login({ handleInputChange }) {
     event.preventDefault();
     fetch(`https://api.github.com/users/${user}`).then((response) =>
       response.json().then((data) => {
-        const gitData = data;
         if (user.length < 3) {
           alert("Usuário inválido!");
         } else if (data.message == "Not Found") {
-          alert("Usuário inválido!");
+          alert("Usuário inválido");
         } else {
           router.push(`/chat?username=${user}`);
         }
@@ -55,7 +54,8 @@ function Login({ handleInputChange }) {
               name="btnEntrar"
               className="w-full bg-matrix-800 text-neu-200 font-bold rounded-md h-7
             hover:bg-matrix-500 hover:shadow-matrix-400/60 hover:shadow-lg
-            hover:text-white brightness-110"
+            hover:text-white brightness-110
+              transition ease-in-out delay-150 duration-150"
               type="submit"
               value="Entrar"
             />

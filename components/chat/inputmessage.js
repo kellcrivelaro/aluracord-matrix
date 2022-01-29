@@ -31,7 +31,7 @@ export default function InputMessage({ handleNewMessage }) {
       />
       <button
         className="w-28 rounded-md text-neu-300 font-bold text-md hover:text-neu-000 
-      hover:bg-neu-400/20"
+      hover:bg-neu-400/20 transition ease-in-out delay-150 duration-300"
         onClick={handleSubmit}
       >
         Enviar

@@ -17,7 +17,7 @@ const TextArea = ({
           ></div>
         </div>
       ) : (
-        <div className="overflow-y-auto flex flex-col-reverse">
+        <div className="overflow-y-scroll flex flex-col-reverse h-[32rem]">
           {messageList.map((message) => {
             return (
               <Message
