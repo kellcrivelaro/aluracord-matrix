@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 
-export default function Header() {
+export default function Header({ user }) {
   const router = useRouter();
   return (
     <div className="flex flex-row justify-between w-full mb-2 items-end">
-      <p className="text-neu-000 text-4xl font-bold ml-6">Chat</p>
+      <p className="text-neu-000 text-4xl font-bold ml-6">Chat - {user}</p>
       <input
         name="btnLogout"
         className="w-[6rem] bg-matrix-800 text-neu-200 font-bold rounded-md h-7 px-3 mb-1

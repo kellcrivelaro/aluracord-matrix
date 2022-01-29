@@ -21,7 +21,7 @@ function Login({ handleInputChange }) {
         } else if (data.message == "Not Found") {
           alert("Usuário inválido!");
         } else {
-          router.push("/chat");
+          router.push(`/chat?username=${user}`);
         }
       })
     );

@@ -1,7 +1,12 @@
 import InputMessage from "./inputmessage";
 import Message from "../chat/message";
 
-const TextArea = ({ handleNewMessage, messageList, loading }) => {
+const TextArea = ({
+  handleNewMessage,
+  messageList,
+  loading,
+  deleteMessage,
+}) => {
   return (
     <div className="flex flex-col justify-end bg-neu-500/80 rounded-md w-[48rem] h-[32rem]">
       {loading ? (
@@ -14,12 +19,18 @@ const TextArea = ({ handleNewMessage, messageList, loading }) => {
       ) : (
         <div className="overflow-y-auto flex flex-col-reverse">
           {messageList.map((message) => {
-            return <Message message={message} key={message.id} />;
+            return (
+              <Message
+                message={message}
+                key={message.id}
+                deleteMessage={deleteMessage}
+              />
+            );
           })}
         </div>
       )}
-
       <div className="p-1"></div>
+      <hr className="border-neu-400/50"></hr>
       <InputMessage handleNewMessage={handleNewMessage} />
     </div>
   );
